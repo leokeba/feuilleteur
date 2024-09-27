@@ -1,6 +1,7 @@
 <script lang="ts">
+	import type { GutenbergBook } from "../client";
     import type { Book } from "./types";
-    export let book: Book;
+    export let book: GutenbergBook;
 </script>
 
 <article class="flex">
@@ -16,10 +17,10 @@
     <div>
         <hgroup>
             <h5 class="text">{book.title}</h5>
-            {#if book.authors.length > 0}
+            {#if book.authors}
                 <p class="text">{book.authors.map((b)=>b.name).reduce((a, b) => a + ', ' + b)}</p>
             {/if}
-            {#if book.languages.length > 0}
+            {#if book.languages}
                 <p>Language : {book.languages.reduce((a, b) => a + ', ' + b)}</p>
             {/if}
         </hgroup>

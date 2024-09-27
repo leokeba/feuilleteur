@@ -3,7 +3,7 @@
     import BookCard from "./BookCard.svelte";
 	import ErrorMessage from "./ErrorMessage.svelte";
     import { type Book, type ImportRequest, type SearchRequest } from "./types";
-    import { BackendService } from "../client";
+    import { BackendService, type GutenbergBook } from "../client";
 
     const dispatch = createEventDispatcher();
 
@@ -35,7 +35,7 @@
         else throw new Error(response.statusText);
     }
 
-    async function importBook(book: Book) {
+    async function importBook(book: GutenbergBook) {
         importRequest.status = "processing";
         importRequest.error = "";
         searchRequest.results = [book];

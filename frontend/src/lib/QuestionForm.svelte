@@ -2,9 +2,11 @@
     import { type QuestionRequest } from "./types";
 	import ErrorMessage from "./ErrorMessage.svelte";
 	import Answer from "./Answer.svelte";
-    import { BackendService, type GetBooksResponse } from "../client";
+    import { BackendService, type BookMetadata, type GetBooksResponse } from "../client";
 
     export let books: GetBooksResponse;
+
+    let selectedBook: BookMetadata;
 
     let question: QuestionRequest = {
         question: "",
@@ -20,6 +22,7 @@
 
     async function postQuestion() {
         try {
+            question.book = selectedBook.uuid;
             question.answer = {
                 text: "",
                 documents: [],
@@ -50,13 +53,18 @@
         <article>
             <h4>Ask Questions</h4>
             <hr>
+            {#if selectedBook}
+            <figure>
+                <img src={selectedBook.cover_url} alt={selectedBook.title}>
+            </figure>
+            {/if}
             <form>
                 <label for="book">
                     Book
-                    <select name="book" aria-label="Select" required bind:value={question.book}>
+                    <select name="book" aria-label="Select" required bind:value={selectedBook}>
                         <option selected disabled value="">Select a book</option>
                         {#each books as book}
-                        <option value={book.uuid}>
+                        <option value={book}>
                             {book.title}
                         </option>
                         {/each}

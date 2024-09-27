@@ -1,3 +1,5 @@
+import type { GutenbergBook } from "../client";
+
 export type Author = {
     name: string;
     birth_year: number;
@@ -25,7 +27,7 @@ export type RequestStatus = 'idle' | 'processing' | 'ok' | 'error';
 export type SearchRequest = {
     search: string;
     status: RequestStatus;
-    results: Book[];
+    results: GutenbergBook[];
 }
 
 export type ImportRequest = {
