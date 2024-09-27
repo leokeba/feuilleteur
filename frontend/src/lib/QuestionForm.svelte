@@ -92,4 +92,8 @@
     .full-width {
         width: 100%;
     }
+    figure {
+        display: flex;
+        justify-content: center;
+    }
 </style>
