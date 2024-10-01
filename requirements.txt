@@ -7,8 +7,8 @@ langchain-community==0.3.0
 langchain-unstructured==0.1.4
 langchainhub==0.1.21
 unstructured==0.15.13
-pypandoc==1.13
 nltk==3.9.1
 loguru==0.7.2
 pillow==10.4.0
 pytest==8.3.2
+pydantic-settings==2.5.2
